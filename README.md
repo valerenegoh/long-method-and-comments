@@ -20,7 +20,7 @@ Present it back to the team by explaining:
 
 ##### Clone the project
 ```shell
-git clone git@gitlab.freewheelers.bike:mcalder/dojos.git
+git clone <link to repo>
 ```
 
 ##### Checkout and update the master
