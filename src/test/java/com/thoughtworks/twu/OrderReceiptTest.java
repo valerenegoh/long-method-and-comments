@@ -44,5 +44,4 @@ public class OrderReceiptTest {
 
         assertTrue(output.contains("Delivery on Mon, 31 Dec 2012 23:59:00 GMT"));
     }
-
 }
