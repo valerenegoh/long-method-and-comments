@@ -27,4 +27,15 @@ public class LineItem {
     double totalAmount() {
         return price * quantity;
     }
+
+    public String statement() {
+		StringBuilder output = new StringBuilder();
+
+		output.append(getDescription()).append('\t');
+		output.append(getPrice()).append('\t');
+		output.append(getQuantity()).append('\t');
+		output.append(totalAmount());
+
+		return output.toString();
+	}
 }
