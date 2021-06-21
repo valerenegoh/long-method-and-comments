@@ -33,20 +33,14 @@ public class OrderReceipt {
 	}
 
 	private void appendLineItemsAndSalesTax(StringBuilder output) {
-		double totalSalesTax = 0d;
-		double total = 0d;
 		for (LineItem lineItem : order.getLineItems()) {
-			output.append(lineItem.statement());
+			output.append(lineItem.getLineStatement());
 			output.append(System.lineSeparator());
-
-			double salesTax = calculate10PctSalesTax(lineItem);
-			totalSalesTax += salesTax;
-			total += lineItem.totalAmount() + salesTax;
 		}
-		output.append(ORDER_RECEIPT_TOTAL_SALES_TAX).append(totalSalesTax);
+		output.append(ORDER_RECEIPT_TOTAL_SALES_TAX).append(order.getTotalSalesTax());
 		output.append(System.lineSeparator());
 
-		output.append(ORDER_RECEIPT_TOTAL_AMOUNT).append(total);
+		output.append(ORDER_RECEIPT_TOTAL_AMOUNT).append(order.getTotalAmount());
 		output.append(System.lineSeparator());
 	}
 
@@ -54,9 +48,5 @@ public class OrderReceipt {
 		ZonedDateTime date = ZonedDateTime.parse(order.deliveryDate);
 		String readableDate = date.format(DateTimeFormatter.RFC_1123_DATE_TIME);
 		output.append(ORDER_RECEIPT_DELIVERY_DATE).append(readableDate);
-	}
-
-	private double calculate10PctSalesTax(LineItem lineItem) {
-    	return lineItem.totalAmount() * .10;
 	}
 }

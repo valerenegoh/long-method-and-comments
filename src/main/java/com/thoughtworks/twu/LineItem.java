@@ -28,7 +28,7 @@ public class LineItem {
         return price * quantity;
     }
 
-    public String statement() {
+    public String getLineStatement() {
 		StringBuilder output = new StringBuilder();
 
 		output.append(getDescription()).append('\t');
